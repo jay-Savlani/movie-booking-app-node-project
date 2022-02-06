@@ -1,11 +1,15 @@
 const e = require("cors");
 const express = require("express");
 
-//const cors = require("cors");
+const cors = require("cors");
 // Importing dotenv for accessing env variables
 require("dotenv").config();
 
 const app = express();
+
+// app middlewars
+
+app.use(cors());
 
 const db = require("./models");
 db.mongoose
@@ -23,17 +27,21 @@ db.mongoose
   });
 
 
-app.get("/movies" , (req, res) => {
-    res.status(200).json("All Movies Data in JSON format from Mongo DB");
-});
+// app.get("/movies" , (req, res) => {
+//     res.status(200).json("All Movies Data in JSON format from Mongo DB");
+// });
 
-app.get("/artists" , (req, res) => {
-    res.status(200).json("All Artists Data in JSON format from Mongo DB");
-});
+// app.get("/artists" , (req, res) => {
+//     res.status(200).json("All Artists Data in JSON format from Mongo DB");
+// });
 
-app.get("/genres" , (req, res) => {
-    res.status(200).json("All Genres Data in JSON format from Mongo DB");
-});
+// app.get("/genres" , (req, res) => {
+//     res.status(200).json("All Genres Data in JSON format from Mongo DB");
+// });
+
+app.get("/", (req, res) => {
+        res.status(200).json({message:  "Welcome to Upgrad Movie booking application development."});
+    })
 
 
 app.listen(process.env.PORT, () => console.log(`Server is listening on port ${process.env.PORT}`));
