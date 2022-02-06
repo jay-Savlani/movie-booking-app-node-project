@@ -26,6 +26,10 @@ db.mongoose
     process.exit();
   });
 
+// Importing all routes 
+  require("./routes/movie.routes")(app);
+  require("./routes/genre.routes")(app);
+  require("./routes/artist.routes")(app);
 
 // app.get("/movies" , (req, res) => {
 //     res.status(200).json("All Movies Data in JSON format from Mongo DB");
